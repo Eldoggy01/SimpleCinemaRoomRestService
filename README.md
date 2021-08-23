@@ -34,7 +34,7 @@ The request should have the token feature that identifies the ticket in the requ
 
 
 
-/stats  - handles POST requests with URL parameters. If the URL parameters contain a password key with a super_secret value, return 
+/stats  - handles POST requests with URL parameters. Returns
 the movie theatre statistics in the following format:
 {
     "current_income": 0,
