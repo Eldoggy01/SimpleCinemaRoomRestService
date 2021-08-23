@@ -14,7 +14,7 @@ public class ErrorHandler {
 
     private final String ERROR = "error";
 
-    @ExceptionHandler({PasswordNotCorrectException.class,TokenExpiredException.class,SeatNotAvailableException.class})
+    @ExceptionHandler({TokenExpiredException.class,SeatNotAvailableException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Map<String, String> handlePasswordNotCorrectException(Exception exception) {
         return Map.of(ERROR, exception.getMessage());

@@ -63,16 +63,12 @@ public class CinemaRoomController {
     }
 
     @PostMapping("/stats")
-    public ResponseEntity<Map> getStats(@RequestParam(value = "password", required = false) String password) {
-        if (Objects.equals("super_secret", password)) {
+    public ResponseEntity<Map> getStats() {
             Map<String, Integer> bodyMap = new HashMap<>();
             bodyMap.put("current_income", ticketRepo.getCurrentIncome());
             bodyMap.put("number_of_available_seats", cinemaRoom.getAvailableSeatsList().size());
             bodyMap.put("number_of_purchased_tickets", ticketRepo.getTicketsSold().size());
             return new ResponseEntity<>(bodyMap, HttpStatus.OK);
-        } else {
-            throw new PasswordNotCorrectException("The password is wrong!");
-        }
     }
 
     private void verifyThatSeatCoordinatesInCorrectBounds(int row, int column) {
@@ -80,4 +76,5 @@ public class CinemaRoomController {
             throw new SeatNotAvailableException("The number of a row or a column is out of bounds!");
         }
     }
+
 }
